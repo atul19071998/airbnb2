@@ -1,0 +1,160 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* .container{
+    background-color: blue;
+} */
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:white;
+    position: fixed;
+    top:0px;
+    width: 100%;
+    height: 90px;
+    border-bottom: 1px solid rgb(212, 210, 210);
+    z-index:1;
+     
+}
+
+.logo img{
+    width: 130px;
+    margin-left:45px;
+}
+.navLink{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin-top: 15px;
+    border: 1px solid rgb(144, 144, 144);
+    border-radius: 50px;
+    padding: 7px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.navLink li{
+    margin: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 10px;
+    /* border-right: 2px solid rgb(194, 190, 190); */
+}
+
+.navLink li a{
+    text-decoration: none;
+    color: black;
+}
+ .navLink span{
+    width:40px;
+    height:40px;
+    background-color: #FF385C;
+    border-radius: 50%;
+    padding-right: 15px;
+ }
+ .navLink span .fa-solid{
+    font-size: 15px;
+    color: white;
+    margin-top: 12px;
+    margin-left: 10px;
+    text-align: center;
+     
+    
+ }
+.header-right{
+    display: flex;
+    list-style: none; 
+    margin-right: 30px;
+ 
+}
+ .host{
+    margin-top: 10px;
+    
+ }
+.host span{
+     
+    font-size: 18px;
+    
+}
+.host span a{
+    text-decoration: none;
+    color: black;
+}
+.fa-globe{
+     font-size: 20px;
+     margin-left:12px;
+}
+ 
+.dropdown{
+    border:1px solid black;
+    margin-left:15px;
+} 
+.nav-item{
+    list-style: none;
+    border: 1px solid rgb(10, 10, 10);
+    border-radius: 50px;
+    padding:10px;
+    padding-right: 10px;
+
+}
+/* .nav-item dropdown{
+    margin-left: 30px;
+} */
+ /* cards styles section starts here */
+ .card{
+
+    border:1px solid rgb(249, 247, 247);
+    margin-top: 10px;
+    padding:5px 5px;
+    
+}
+.row{
+     
+    padding-right:50px;
+   
+}
+ 
+.card img{
+    width:260px;
+    height: 220px;
+    border-radius: 10px;
+  
+}
+.row{
+    position: absolute;
+    top:92px;
+}
+
+
+
+/* footer section starts here */
+footer{
+    background-color:white;
+    font-family:'Helvetica',sans-serif;
+    position:fixed;
+    bottom: 0;
+    left:0px;
+    border-top: 1px solid rgb(250, 246, 246);
+    padding: 10px;
+    height:40px;
+    width:100%;
+    /* padding-bottom:40px; */
+}
+
+
+  
+ 
+   footer ul li{
+     text-align: center;
+     display: inline-block;
+     margin: 0 10px;
+
+  } 
+  .main-footer{
+    display:flex;
+    justify-content: space-between;
+  }
+ 

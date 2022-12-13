@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/732188d8b2.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      body {
+        background-image: url("https://img.freepik.com/free-photo/mockup-white-wall-loft-style-house-with-sofa-accessories-room-3d-rendering_41470-3836.jpg?w=2000");
+        background-size: cover;
+      }
+      .container {
+        width: 95vw;
+        height: 100vh;
+        float: right;
+        margin-top: 100px;
+
+        background-color: transparent;
+        padding: 10px;
+      }
+      p {
+        font-size: 25px;
+        text-align: center;
+      }
+      .form-control {
+        width: 300px;
+      }
+      p {
+        font-size: 20px;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- {{>navbar}} -->
+    <%- include('../partials/navbar') %>
+    <div class="container">
+      <p>Log in</p>
+      <hr />
+      <h2>Welcome to Airbnb Host Experience.</h2>
+      <form action="/hostlogin" method="POST">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            name="email"
+          />
+          <div id="emailHelp" class="form-text">
+            We'll never share your username with anyone else.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            name="password"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-danger">Login</button>
+        or <b><a href="/host_signup"> Signup Here!</a></b>
+      </form>
+    </div>
+    <%- include('../partials/footer') %>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
