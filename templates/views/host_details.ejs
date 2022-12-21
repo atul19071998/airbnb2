@@ -110,8 +110,7 @@
     <section class="booking">
       <div class="cards">
         <h2 class="px-5">
-          <%=data.name%>
-         
+          
         </h2>
        
         <div class="booking-icon">
@@ -126,28 +125,28 @@
           </div>
         </div>
         <div class="imageGrid">
-          <div class="item-1"> <img src="<%=data.images.picture_url%>" class="card-img-top" alt="..." /></div>
-          <div class="item-2"> <img src="<%=data.images.picture_url%>" class="card-img-top" alt="..." /></div>
-          <div class="item-3"> <img src="<%=data.images.picture_url%>" class="card-img-top" alt="..." /></div>
-          <div class="item-4"> <img src="<%=data.images.picture_url%>" class="card-img-top" alt="..." /></div>
-          <div class="item-5"> <img src="<%=data.images.picture_url%>" class="card-img-top" alt="..." /></div>
+          <div class="item-1"> <img src="<%=data1.Homeurl%>" class="card-img-top" alt="..." /></div>
+          <div class="item-2"> <img src="<%=data1.Homeurl%>" class="card-img-top" alt="..." /></div>
+          <div class="item-3"> <img src="<%=data1.Homeurl%>" class="card-img-top" alt="..." /></div>
+          <div class="item-4"> <img src="<%=data1.Homeurl%>" class="card-img-top" alt="..." /></div>
+          <div class="item-5"> <img src="<%=data1.Homeurl%>" class="card-img-top" alt="..." /></div>
       </div>
       
 
           
       <div class="about">
         <span><h2><i class="fa-solid fa-house-user"></i></i> About Home</h2></span>
-        <p> <%=data.space%></p>
+       
         <span><h5><i class="fa-solid fa-building-wheat"></i> Home Type:</h5></span>
-        <p> <%=data.property_type%></p>
+       <p> <%=data1.PropertyType%></p> 
         <span><h5><i class="fa-solid fa-restroom"></i> Room Type:</h5></span>
-        <p> <%=data.room_type%></p>
+        
         <span><h5><i class="fa-solid fa-moon"></i> Minimum Nights:</h5></span>
-        <p> <%=data.minimum_nights%></p>
+         
         <span><h5><i class="fa-sharp fa-solid fa-street-view"></i> Overview:</h5></span>
-        <p> <%=data.neighborhood_overview%></p>
+       
         <span><h5><i class="fa-solid fa-file"></i> Policy</h5></span>
-        <p> <%=data.cancellation_policy%></p>
+       
         
  
           </div>
@@ -159,20 +158,13 @@
          
           <h4>What this place offers</h4>
           <div class="offers">
-          <span><p><i class="fa-solid fa-eye"></i>      <%=data.amenities[7]%></span></p> 
-          <span><p><i class="fa-solid fa-kitchen-set"></i>   <%=data.amenities[1]%></span> </p>
-          <span><p><i class="fa-solid fa-briefcase"></i>  <%=data.amenities[2]%></span></p>
-          <span><p><i class="fa-sharp fa-solid fa-building"></i> <%=data.amenities[3]%></span> </p>
-          <span><p><i class="fa-solid fa-wifi"></i>  <%=data.amenities[0]%></span> </p>
-          <span><p><i class="fa-solid fa-umbrella-beach"></i>  <%=data.amenities[4]%></span> </p>
-          <span><p><i class="fa-sharp fa-solid fa-dog"></i>  <%=data.amenities[5]%><span> </p>
-          </div>
+         
         </div>
         <div class="review-right">
           <div class="reserved">
             <form action="">
             <h3>Book Your Home.</h3>
-            <p>Total price :<b>₹11,<%=data.price%></b></p>
+            <p>Total price :<b>₹11,<%=data1.Price%></b></p>
              
           <div class="form-group">
             <input class="form-control" type="date" required>

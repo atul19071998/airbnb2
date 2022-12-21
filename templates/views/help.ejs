@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/style.css" />
     <style>
   
-
+  
 h1{
   font-weight: 800 !important;
   font-size: 50px;
@@ -21,11 +21,17 @@ h6{
 
 .img-wrapper{
   width: 500px;
+  padding: 10px;
 }
+ 
 
 img{
   height: 100%;
   width: 100%;
+}
+#form-left{
+  width:600px;
+ padding: 10px;
 }
 
 input, textarea, select{
@@ -64,29 +70,31 @@ button i{
           <h1>Let's get you</br> some help!</h1>
           <h6>Have any issue? Send us an <span class="email-us">email.</span></h6>
           <div class="img-wrapper">
-          <img src="https://i.ibb.co/bWfN3Qy/undraw-onboarding-o8mv-1.png" alt="undraw-onboarding-o8mv-1" border="0">
+          <img src="https://www.occamagenciadigital.com/hs-fs/hubfs/img_hero_landing_roseta_bottom-1.gif?width=285&height=204&name=img_hero_landing_roseta_bottom-1.gif" border="0">
             </div>
         </div>
         
         <div class="col-md-6">
-          <form>
-        <div class="form-group">
-          <label for="list">What list are you looking for ?</label>
-          <input type="text" class="form-control" id="list" aria-describedby="emailHelp">
+          <form  action="https://formspree.io/f/xvonpknr"
+          method="POST" >
+             
+        <div class="form-group" id="form-left">
+          <label for="username">Please Enter your name ?</label>
+          <input type="text" name="username"  placeholder="Enter your name" autocomplete="off" required class="form-control" id="list" aria-describedby="emailHelp">
         </div>
-        <div class="form-group">
-          <label for="tags">We're here for you.</label>
-          <input type="text" class="form-control" id="tags">
-        </div>
-            
-          <div class="form-group">
-          <label for="describe">Please desribe your list needs ?</label>
-          <textarea type="text" class="form-control" id="describe" rows="5"></textarea>
+        <div class="form-group" id="form-left">
+          <label for="email">Enter your Email .?</label>
+          <input type="email" name="email" placeholder="abc@gmail.com" autocomplete="off" required  class="form-control" id="tags">
         </div>
             
-            <div class="form-group">
+          <div class="form-group" id="form-left">
+          <label for="describe">Please describe your Airbnb thoughts ?</label>
+          <textarea type="text" name="describe" placeholder="Enter your response. " autocomplete="off" required class="form-control" id="describe" rows="5"></textarea>
+        </div>
+            
+            <div class="form-group" id="form-left">
           <label for="exampleFormControlSelect1">Select Category</label>
-          <select class="form-control" id="exampleFormControlSelect1">
+          <select class="form-control" id="exampleFormControlSelect1"   id="form-left">
             <option>Getting started with Airbnb.</option>
             <option>Accesing your Account.</option>
             <option>Help with a reservation</option>
@@ -95,7 +103,7 @@ button i{
           </select>
         </div>
                   
-      <button type="button" class="btn btn-danger"><span>Submit</span> <i class="fas fa-long-arrow-alt-right"></i></button>
+      <button type="submit" class="btn btn-danger"><span>Send</span> <i class="fas fa-long-arrow-alt-right"></i></button>
         </div>
           
         </div>

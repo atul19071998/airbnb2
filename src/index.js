@@ -12,7 +12,7 @@ const cookieParser = require("cookie-parser");
 const auth = require("./middleware/auth");
 const bodyParser = require('body-parser');
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 
 
 const conn = require("./db/connect");
@@ -35,37 +35,41 @@ app.set("views", template_path);
 //  console.log(process.env.SECRET_KEY);
 
 
-//session flash
+//init session flash
 app.use(session({
-  secret: 'flashblog',
-  saveUninitialized: true,
-  resave: true
+  secret:  process.env.SESSION_SECRET_KEY,
+  saveUninitialized: false,
+  resave:false,
+  cookie :{
+    //secure:true,
+    httpOnly : true,
+  }
 }));
 app.use(flash());
-app.use(function (req, res, next) {
+app.use(function(req, res, next){
   res.locals.message = req.flash();
   next();
 });
-
+ 
 // app.get('/', (req, res) => {
 //   req.flash('success', 'Welcome!!');
-//   res.redirect('/display-message');
+//   res.redirect('/flash-message');
 // });
-
-// app.get('/display-message', (req, res) => {
-//   res.render("display");
-// });
+ 
+app.get('/flash-message', (req, res) => {
+  res.render("flash");
+});
 
  
 //Database code access code from mongoatlas
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 async function FindData() {
   const uri = "mongodb+srv://atulnew:topology@cluster0.yylrcsq.mongodb.net/?retryWrites=true&w=majority";
   const client = new MongoClient(uri);
 
   await client.connect();
 
-  var result = await client.db("sample_airbnb").collection("listingsAndReviews").find({ "property_type": "House" }).limit(52).toArray();
+  var result = await client.db("sample_airbnb").collection("listingsAndReviews").find({ "property_type": "House" }).limit(8).toArray();
 
 
   return result
@@ -81,35 +85,72 @@ async function FindData1(id) {
 
   var result = await client.db("sample_airbnb").collection("listingsAndReviews").findOne({ _id: id });
   // console.log(result);
+ 
+   
 
   return result
 
 }
+ 
+async function FindData2(){
+  // console.log("find data"+ _id);
+  const uri= "mongodb+srv://atulnew:topology@cluster0.yylrcsq.mongodb.net/?retryWrites=true&w=majority";
+  const client = new MongoClient(uri);
 
-// async function FindData2(id) {
-//   // console.log("find data"+ _id);
-//   const uri= "mongodb+srv://atulnew:topology@cluster0.yylrcsq.mongodb.net/?retryWrites=true&w=majority";
-//   const client = new MongoClient(uri);
+  await client.connect();
+  // "PropertyType":"Home"
+ 
+  var result1 = await client.db("userdetail").collection("host_datas").find().toArray();
+  // console.log(result1);
 
-//   await client.connect();
+  return result1
 
-//   var result = await client.db("userdetail").collection("host_datas").findOne({_id:id});
-//   // console.log(result);
+};
+async function FindData3(HomeName) {
+  
+  const uri = "mongodb+srv://atulnew:topology@cluster0.yylrcsq.mongodb.net/?retryWrites=true&w=majority";
+  const client = new MongoClient(uri);
 
-//   return result
+  await client.connect();
 
-// };
+  var result2 = await client.db("userdetail").collection("host_datas").findOne({HomeName});
+  // console.log(result2 +"the doing");
+ 
+   
+
+  return result2
+
+}
+ 
 //for render a details pages
-app.get('/details/:id', auth, async (req, res) => {
-
-
-
+app.get('/details/:id',   async (req, res) => {
+      
   let data = await FindData1(req.params.id);
+    // let data1 = await FindData3(req.params.id);
+  
   //  console.log(data);
   res.render('details', {
     data: data,
     // data1:data1
   });
+  
+
+});
+
+
+ 
+  app.get('/host_details/:HomeName',   async (req, res) => {
+  let hub = (req.params.HomeName);
+
+    let data1 = await FindData3(hub);
+    
+    
+
+    //  console.log(data1);
+     
+    res.render('host_details', {
+      data1: data1
+    });
 
 
 });
@@ -119,34 +160,34 @@ app.get("/logout", async (req, res) => {
 
 
     res.clearCookie("jwt");
-    console.log("logout succesfully");
-
-    res.redirect("/");
+    // console.log("logout succesfully");
+    req.flash("success","User loggedout succesfully");
+    res.redirect('/flash-message');
+    // const message = req.flash()
+    // // res.redirect("/");
   } catch (error) {
     res.status(500).send(error);
   }
 })
 //for home route
 app.get('/', async (req, res) => {
-
-
-
-
-
-  let data = await FindData()
-  // let data1 = await FindData2();
+  
+  let data = await FindData();
+  let data1 = await FindData2();
+ 
   // console.log(data);
   res.render('index', {
     data: data,
-    //  data1:data1
+    data1:data1
+     
   });
 
-
 });
 
-app.get('/display-message', (req, res) => {
-    res.send(req.flash('message'));
-});
+ 
+// app.get('/display-message', (req, res) => {
+//     res.send(req.flash('message'));
+// });
 
 
 //for register the form by using a scheema and token generate by using jwtwebtoken.
@@ -179,7 +220,7 @@ app.post('/register', async (req, res) => {
 
       //passworde hash
       res.cookie("jwt", token);
-      console.log(cookie);
+      // console.log(cookie);
 
       const registered = await registerEmployee.save();
       // console.log("the page part" + registered);
@@ -192,7 +233,7 @@ app.post('/register', async (req, res) => {
 
   } catch (err) {
     res.status(400).send(err);
-    console.log("the error part page");
+    // console.log(err);
   }
 });
 
@@ -229,19 +270,27 @@ app.post('/login', async (req, res) => {
     //  if(useremail.password === password){
     if (isMatch) {
       //flash message
-      //  req.flash('message', 'Welcome to Blog');
-      //  res.redirect('/display-message');
+      req.flash("success","User registered and loggedin succesfully");
+    //  res.redirect('/flash-message');
+      // req.flash('success', 'Welcome!!');
+      res.redirect('/');
+ 
+      // console.log("login success");
      
   
-  res.redirect("/");
+ 
 
     } else {
-      res.send("Invalid login Details");
+      // res.send("Invalid login Details");
+      // req.flash("error","Email already registered please login");
+      // res.render('/flash-message');
+      res.send("Password is not matching.");
     }
     //  console.log(useremail.password);
     //  console.log(`${email}and the password is: ${password} `)
   } catch (err) {
-    res.status(400).send("Invalid login Details");
+    // res.status(400).send("Invalid login Details");
+    res.status(400).send(err);
   }
 });
 
@@ -280,7 +329,7 @@ app.post('/register', async (req, res) => {
       //  console.log("the success part" + registerEmployee);
       const token = await registerEmployee.generateAuthToken();
       //  console.log("the token part" + token);
-
+       res.redirect('/');
       //new gebnerate cookie
       res.cookie("jwt", token, {
         expires: new Date(Date.now() + 3000),
@@ -293,16 +342,27 @@ app.post('/register', async (req, res) => {
 
       const registered = await registerEmployee.save();
       // console.log("the page part" + registered);
-      res.redirect('/');
+      // res.redirect('/');
+      console.log(registered);
+      if(registered !== ""){
+        req.flash("success","User registered and loggedin succesfully");
+        res.redirect('/');
+        // console.log("success");
+      }
 
 
     } else {
-      res.send("password are not matching");
+      // res.send("password are not matching");
+      req.flash("error","password not matching ");
+      res.render('/flash-message');
+      res.send("Password is not matching");
     }
 
   } catch (err) {
-    res.status(400).send(err);
-    console.log(err);
+    req.flash("error","email already registered please login");
+    res.redirect('/');
+    // res.status(400).send(err);
+    // console.log(err);
   }
 });
 //using of bcrypt for match the password authenticate.
@@ -422,11 +482,15 @@ app.post('/hostinform', async (req, res) => {
   const HostSchema = new Host_Register({
     HomeName: req.body.hname,
     Location: req.body.location,
-    Imageurl: req.body.Imageurl,
+    PropertyType: req.body.ptype,
+    Homeurl: req.body.Imageurl,
+    minimum_nights: req.body.mnights,
+    neighbourhood_overview: req.body.overview,
+    cancellation_policy:req.body.policy,
     Price: req.body.price,
-
+    
   });
-  console.log(HostSchema);
+  // console.log(HostSchema);
   const registered = await HostSchema.save();
   // console.log("the page part" + registered);
   res.redirect('/');
@@ -442,7 +506,7 @@ const createToken = async () => {
   });
   //  console.log(token);
 
-  const userVer = await jwt.verify(token, "SECRET_KEY");
+  const userVer =  await jwt.verify(token, "SECRET_KEY");
   //  console.log(userVer);
 
 }

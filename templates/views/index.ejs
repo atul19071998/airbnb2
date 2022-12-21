@@ -11,35 +11,29 @@
   <script src="https://kit.fontawesome.com/732188d8b2.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/css/style.css" />
   <title>Airbnb</title>
+  
 </head>
 
 <body>
-  <div class="container-fluid">
+  
     <!-- header section starts here -->
     <%- include('../partials/navbar') %>
     <!-- header section ends here -->
-    <!-- <div class="row1">
-    <div class="card" style="width: 18rem;">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div> -->
+    
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
 
     <section class="container">
-       
-  
+      
+        
+   
+      
+    
       <div class="row">
         <%data.forEach((element)=>{%>
       
         <div class="col-sm-3">
-        <div class="card" style="width: 17rem;">
-          <a href="/details/<%=element._id%>"><img src="<%=element.images.picture_url
-          %>" class="card-img-top" alt="..."></a>
+        <div class="cards" style="width: 17rem;">
+          <a href="/details/<%=element._id%>"><img src="<%=element.images.picture_url%>" class="card-img-top" alt="..."></a>
           <div class="card-body">
             <p class="card-text">
               <p><b><%=element.name%></b> </p><span>⭐⭐⭐⭐⭐ 5.0</span>
@@ -52,8 +46,29 @@
       </div>
        <%});%>
 
+        <%data1.forEach((elem)=>{%>
+      <div class="cardes" style="width: 18rem;">
+        <a href="/host_details/<%=elem.HomeName%>"><img src="<%=elem.Homeurl%>" class="card-img-top" alt="..."></a>
+        <div class="card-body">
+          <p class="card-text">
+           
+            <p><b><%=elem.HomeName%></b> </p><span>⭐⭐⭐⭐⭐ 5.0</span>
+           
+            <p><b>₹<%=elem.Price%></b>/night &nbsp&nbsp&nbsp&nbsp&nbsp ❤️❤️❤️</p>
+           
+            
+          </p>
+        </div>
+      </div>
+      <%});%>
+    </div>
+
+  
+    
     </section>
-  </div>
+    
+   
+
   <%- include('../partials/footer') %>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

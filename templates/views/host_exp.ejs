@@ -9,33 +9,74 @@
      
     <link rel="stylesheet" href="/css/style.css" />
     <style>
-        .container-fluid{
-            height:80vh;
-            margin-top: 100px;
+       
+        body{
+        background-image: url("https://thumbs.dreamstime.com/b/abstract-natural-backgrounds-your-design-51859129.jpg");
+        background-repeat: no-repeat;
+        background-size:100%;
+         
+      }
+      .container-fluid{
+            height:100vh;
+
            padding: 10px;
         }
+
+        .experience{
+          padding: 10px;;
+        }
+        h2{
+          padding: 10px;;
+          text-align: center;
+          font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+          font-size: 35px;
+          color:rgb(26, 2, 2);
+      
+
+        }
+        
     </style>
  
   </head>
   <body>
+    <%- include('../partials/navbar') %>
  <div  class="container-fluid">
+  
     <div class="experience">
-     <form action="/hostinform" method="POST">
-        <%- include('../partials/navbar') %>
     
-      <div class="col-md-6">
-        <label for=" Home name" class="form-label">Home Name</label>
+     <form action="/hostinform" method="POST" class="row g-3">
+        <h2>Add your Home Properties and details...</h2>
+
+    
+      <div class="col-sm-6">
+        <label for="Home name" class="form-label">Home Name</label>
         <input type="home name" class="form-control"  name="hname">
       </div>
-      <div class="col-md-6">
+      <div class="col-sm-6">
         <label for="location" class="form-label">Location</label>
         <input type="password" class="form-control"   name="location">
       </div>
-      <div class="col-md-6" >
+      <div class="col-sm-6">
+        <label for="property_type" class="form-label">PropertyType</label>
+        <input type="property_type" class="form-control"  name="ptype">
+      </div>
+      <div class="col-sm-6" >
         <label for="Image Url" class="form-label">Homeurl</label>
         <input type="text" class="form-control"   name="Imageurl">
       </div>
-      <div class="col-md-6">
+      <div class="col-sm-6" >
+        <label for="minimum_nights" class="form-label">minimum_nights</label>
+        <input type="text" class="form-control"   name="mnights">
+      </div>
+      <div class="col-sm-6" >
+        <label for="neighbourhood_overview" class="form-label">neighbourhood_overview</label>
+        <input type="text" class="form-control"   name="overview">
+      </div>
+      <div class="col-sm-6" >
+        <label for="cancellation_policy" class="form-label">cancellation_policy</label>
+        <input type="text" class="form-control"   name="policy">
+      </div>
+      <div class="col-sm-6">
         <label for="price" class="form-label">Price</label>
         <input type="number" class="form-control"   name="price">
       </div>

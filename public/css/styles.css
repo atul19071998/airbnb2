@@ -104,7 +104,7 @@
    
  }
    
- .cards img{
+ /* .cards img{
     display: block;
     width: 90%;
     height:500px;
@@ -113,7 +113,7 @@
     border: 1px solid white;
     border-radius: 20px;
     padding: 15px;
- }
+ } */
  h2{
     margin-left: 10px;
  
@@ -166,10 +166,10 @@
  
  }
  .review_logo img{
-    width: 190px;
+    width: 200px;
     height:60px;
     padding: 10px;
-    margin-left: 5px;
+  
  }
   p{
  font-size: 20px;

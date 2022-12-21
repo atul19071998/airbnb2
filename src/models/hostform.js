@@ -14,7 +14,23 @@ const HostSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-    Imageurl:{
+    PropertyType:{
+        type:String,
+        required:true
+    },
+    minimum_nights:{
+        type:String,
+        
+    },
+    neighbourhood_overview:{
+        type:String,
+         
+    },
+    cancellation_policy:{
+        type:String,
+         
+    },
+    Homeurl:{
         type:String,
     },
     Price:{
@@ -31,10 +47,7 @@ const HostSchema = new mongoose.Schema({
          }
     }]
     
-//    State:{
-//         type:String,
-//         required: true,
-//     },
+ 
      
 })
 //generating tokens
