@@ -6,27 +6,16 @@
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/732188d8b2.js" crossorigin="anonymous"></script>
-    
+    <link rel="stylesheet" href="/css/signup.css" />
     <link rel="stylesheet" href="/css/style.css" />
-     <style>
-      body{
-        background-image: url("https://img.freepik.com/free-vector/diagonal-motion-lines-white-background_1017-33198.jpg?w=2000");
-        background-repeat: no-repeat;
-        background-size:100%;
-         
-      }
-        .main{
-          height:120vh;
-          
-        }
-        
-    </style>
   </head>
   <body>
     <%- include('../partials/navbar') %>
  <div class="container-fluid">
    <div class="main"> 
  <form class="row g-3"action="/register" method="POST">
+  <h2>Please Fill this Important Information...</h2>
+    <hr>
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label">Email</label>
     <input type="email" class="form-control" id="inputEmail4" name="email">

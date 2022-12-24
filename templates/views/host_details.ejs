@@ -32,7 +32,7 @@
             grid-template-columns: 170px 170px 170px 170px ;
             grid-template-rows: 200px 200px ;
             grid-gap:8px;
-            padding: 30px;
+            padding: 15px;
         }
         .item-1{
             grid-column: 1/4;
@@ -101,7 +101,95 @@
             border-bottom-right-radius: 20px;
             
         }
+         p{
+          font-size: 18px;
+          font-weight: bold;
+          
+         }
+         @media only screen and (max-width: 600px) {
+        h2{
+          font-size: 14px;
+        }
+         .imageGrid{
+         display:flex;
+         flex-direction: column;
+         width: 200px;
+         height:200px;
+        }
+        .item-1 img{
+          width:410px;
+          height:200px;
+          padding:5px;
+          border-radius: 15px;
+
+        }
+        .item-2 img{
+          display: none;
+        }
+        .item-3 img{
+          display: none;
+        }
+        .item-4 img{
+          display: none;
+        }
+        .item-5 img{
+          display: none;
+        }
+        .booking-left{
+          font-size: 12px;
+        }
+        .booking-right{
+          font-size: 12px;
+        }
+        p{
+          font-size: 12px;
+        }
+        h2{
+          font-size: 12px;
+        }
+        h5{
+          font-size: 14px;
+        }
+        .review{
+          display: flex;
+          flex-direction: column;
+          margin-left: 20px;;
+        }
+        .review_logo img{
+            width:140px;
+            height:50px;
+             
+        }
+        h4{
+          font-size: 16px;
+        }
+        .review-right{
+    width:100%;
+    height:50vh;
+ }
+ .map{
+  
+  height: 20px;
+  margin-left: 50px;
+  padding: 10px;
+   
+ }
+ iframe{
+  width: 510px;
+  height: 300px;
+ }
+ .row {
+  display: none;
+ }
+ .d-flex{
+  display: none;
+ }
+ .reserved{
+  width:300px;
+  height: 200px;
+ }
  
+}
   </style>
 </head>
 
@@ -110,9 +198,8 @@
     <section class="booking">
       <div class="cards">
         <h2 class="px-5">
-          
+          <%=data1.HomeName%>
         </h2>
-       
         <div class="booking-icon">
           <div class="booking-left">
             <b><span> <i class="fa-sharp fa-solid fa-star"></i> 
@@ -124,6 +211,7 @@
                
           </div>
         </div>
+        <p class="px-5"> <%=data1.Location%></p>
         <div class="imageGrid">
           <div class="item-1"> <img src="<%=data1.Homeurl%>" class="card-img-top" alt="..." /></div>
           <div class="item-2"> <img src="<%=data1.Homeurl%>" class="card-img-top" alt="..." /></div>
@@ -136,20 +224,20 @@
           
       <div class="about">
         <span><h2><i class="fa-solid fa-house-user"></i></i> About Home</h2></span>
-       
+        <p>Mary Place retains all the proportions of the original artisanal cottage, complete with the chimneys and fireplaces; pretty sash windows and tiny staircases that snake right up into the rooftop third bedroom. The style of the cottage is unique, decorated by Collette Dinnigan with her signature mix of fine country antiques, beautiful bed linen, towels, and eclectic paintings. The tiny private courtyard trimmed with evergreen shrubs and annual flowers - opens out.</p>
         <span><h5><i class="fa-solid fa-building-wheat"></i> Home Type:</h5></span>
        <p> <%=data1.PropertyType%></p> 
         <span><h5><i class="fa-solid fa-restroom"></i> Room Type:</h5></span>
-        
+        <p>Home/Appartments</p>
         <span><h5><i class="fa-solid fa-moon"></i> Minimum Nights:</h5></span>
-         
+        <p>3</p>
         <span><h5><i class="fa-sharp fa-solid fa-street-view"></i> Overview:</h5></span>
-       
+        <p> Feel like royalty with every visit to our elegant hotel suites.</p>
         <span><h5><i class="fa-solid fa-file"></i> Policy</h5></span>
-       
+        <p>Moderate</p>
         
  
-          </div>
+      </div>
       <div class="review">
         <div class="review-left">
           <div class="review_logo">
@@ -158,7 +246,15 @@
          
           <h4>What this place offers</h4>
           <div class="offers">
-         
+            <span><p><i class="fa-solid fa-eye"></i>   Eye</span></p>      
+            <span><p><i class="fa-solid fa-kitchen-set"></i>  Essentials</span> </p>
+            <span><p><i class="fa-solid fa-briefcase"></i>   Air conditioning</span></p>
+            <span><p><i class="fa-sharp fa-solid fa-building"></i>   Kitchen</span> </p>
+            <span><p><i class="fa-solid fa-wifi"></i>   Wifi </span></p>
+            <span><p><i class="fa-solid fa-umbrella-beach"></i>  Free street parking</span> </p>
+            <span><p><i class="fa-sharp fa-solid fa-dog"></i>  Dogs<span></p>
+            
+          </div>
         </div>
         <div class="review-right">
           <div class="reserved">
@@ -274,12 +370,13 @@
    
     <script>
       function myFunction() {
-         if(document.getElementById("form-submit") === true){
+        let x = document.getElementById("form-submit").value
+         if( x == form-submit){
           alert("booking is succesfull.");
-         }  
-        alert("booking is succesful");
-         
-        }
+         } else {
+        alert("please enter your details");
+      }
+        };
 
         
 

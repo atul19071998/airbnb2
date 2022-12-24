@@ -6,63 +6,11 @@
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/732188d8b2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/style.css" />
-    <style>
-  
-  
-h1{
-  font-weight: 800 !important;
-  font-size: 50px;
-}
-
-h6{
-  color: #716f6f
-}
-
-.img-wrapper{
-  width: 500px;
-  padding: 10px;
-}
- 
-
-img{
-  height: 100%;
-  width: 100%;
-}
-#form-left{
-  width:600px;
- padding: 10px;
-}
-
-input, textarea, select{
-  background: #f7f9f8 !important;
-}
-
-.email-us{
-  text-decoration: underline;
-}
-
-label{
-  font-weight: 600;
-  color: #716f6f
-}
-
-button{
-  margin-top: 8px;
-  float: right;
-}
-button span{
-  margin-left: 8px;  
-
-}
-
-button i{
-  margin: 0px 8px;
-}
-    </style>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/help.css"/>
   </head>
   <body>
-    <!-- {{>navbar}} -->
+ 
     <%- include('../partials/navbar') %>
     <div class="container">
         <div class="row">
@@ -73,8 +21,7 @@ button i{
           <img src="https://www.occamagenciadigital.com/hs-fs/hubfs/img_hero_landing_roseta_bottom-1.gif?width=285&height=204&name=img_hero_landing_roseta_bottom-1.gif" border="0">
             </div>
         </div>
-        
-        <div class="col-md-6">
+        <div class="col-md-6"  >
           <form  action="https://formspree.io/f/xvonpknr"
           method="POST" >
              
@@ -86,7 +33,7 @@ button i{
           <label for="email">Enter your Email .?</label>
           <input type="email" name="email" placeholder="abc@gmail.com" autocomplete="off" required  class="form-control" id="tags">
         </div>
-            
+  
           <div class="form-group" id="form-left">
           <label for="describe">Please describe your Airbnb thoughts ?</label>
           <textarea type="text" name="describe" placeholder="Enter your response. " autocomplete="off" required class="form-control" id="describe" rows="5"></textarea>
@@ -101,11 +48,9 @@ button i{
             <option>Getting protected through Aircover</option>
             <option>Refunds</option>
           </select>
-        </div>
-                  
+        </div>     
       <button type="submit" class="btn btn-danger"><span>Send</span> <i class="fas fa-long-arrow-alt-right"></i></button>
         </div>
-          
         </div>
       </div>
  

@@ -69,7 +69,7 @@ async function FindData() {
 
   await client.connect();
 
-  var result = await client.db("sample_airbnb").collection("listingsAndReviews").find({ "property_type": "House" }).limit(8).toArray();
+  var result = await client.db("sample_airbnb").collection("listingsAndReviews").find({ "property_type": "House" }).limit(16).toArray();
 
 
   return result
@@ -123,7 +123,7 @@ async function FindData3(HomeName) {
 }
  
 //for render a details pages
-app.get('/details/:id',   async (req, res) => {
+app.get('/details/:id', auth,   async (req, res) => {
       
   let data = await FindData1(req.params.id);
     // let data1 = await FindData3(req.params.id);
@@ -170,7 +170,7 @@ app.get("/logout", async (req, res) => {
   }
 })
 //for home route
-app.get('/', async (req, res) => {
+app.get('/' , async (req, res) => {
   
   let data = await FindData();
   let data1 = await FindData2();
@@ -515,3 +515,7 @@ app.listen(port, () => {
 
   console.log(`server is listen on port ${port}`);
 });
+
+
+
+ 

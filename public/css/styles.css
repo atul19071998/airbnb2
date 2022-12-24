@@ -95,6 +95,61 @@
  
 
 }
+
+
+@media only screen and (max-width: 400px) {
+   .logo img{
+     width:100px;
+     margin-left:15px;
+ }  
+ .navLink{
+     display: none;
+ }
+
+ .header-right {
+     width:90px;
+     height:40px;
+     
+ }
+ .cards{
+    margin-left: 20px;
+    padding: 10px;
+   
+ }
+ .cardes{
+   margin-left: 20px;
+   padding: 10px;
+  
+}
+
+ }
+@media only screen and (max-width: 600px) {
+ .logo img{
+   width:100px;
+   margin-left:15px;
+}  
+.navLink{
+   display: none;
+}
+.header-right {
+   width:90px;
+   height:40px;
+   margin-right: 30px;
+   
+}
+
+.host{
+   display: none;
+}
+}
+
+
+
+
+
+
+
+
  
  /* details page style start here */
  .booking{
@@ -141,8 +196,8 @@
     grid-template-columns: 1fr 1fr 1fr;
     width: 90%;
     height:90vh;
- 
-    margin-left: 60px;
+    padding-left: 10px;
+    margin-left: 20px;
     background-color: white;
 
  }

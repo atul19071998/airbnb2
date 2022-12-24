@@ -6,45 +6,16 @@
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/732188d8b2.js" crossorigin="anonymous"></script>
-     
+    <link rel="stylesheet" href="/css/login.css" />
     <link rel="stylesheet" href="/css/style.css" />
-    <style>
-      body{
-        background-image: url("https://wallup.net/wp-content/uploads/2017/11/22/408528-swimming_pool.jpg");
-        background-size: cover;
-      }
-        .container{
-            width:40vw;
-            height:100vh;
-            float: right;
-            margin-top: 100px;
-            background-color:transparent;
-            padding:10px;
-        }
-        p{
-            font-size: 25px;
-            text-align: center;
-        }
-        .form-control{
-            width:300px;
-        }
-        p{
- font-size: 20px;
-margin-left: 10px;
- }
-    </style>
   </head>
   <body>
-    
-
-
-    <!-- {{>navbar}} -->
     <%- include('../partials/navbar') %>
     <div class="container">
         <p>Log in</p>
         <hr>
    <h2>Welcome to Airbnb</h2>
-   <form action="/login" method="POST">
+   <form action="/login" method="POST" id="login">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
@@ -56,7 +27,7 @@ margin-left: 10px;
   </div>
    
   <button type="submit" class="btn btn-danger ">Login
-    or   <button type="button" class="btn btn-outline-dark "><b><a href="/signup"> Signup Here!</a></b></button> 
+       <button type="button" class="btn btn-outline-dark "><b><a href="/signup"> Signup Here!</a></b></button> 
 
 </form>
  </div>

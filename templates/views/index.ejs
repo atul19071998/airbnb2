@@ -11,7 +11,11 @@
   <script src="https://kit.fontawesome.com/732188d8b2.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/css/style.css" />
   <title>Airbnb</title>
-  
+  <style>
+    .container{
+      margin-top: 90px;
+    }
+  </style>
 </head>
 
 <body>
@@ -24,21 +28,17 @@
 
     <section class="container">
       
-        
-   
-      
-    
       <div class="row">
         <%data.forEach((element)=>{%>
       
         <div class="col-sm-3">
-        <div class="cards" style="width: 17rem;">
+        <div class="cards">
           <a href="/details/<%=element._id%>"><img src="<%=element.images.picture_url%>" class="card-img-top" alt="..."></a>
           <div class="card-body">
             <p class="card-text">
-              <p><b><%=element.name%></b> </p><span>⭐⭐⭐⭐⭐ 5.0</span>
+              <p><b><%=element.name%></b> </p> 
              
-              <p><b>₹11,<%=element.price%></b>/night &nbsp&nbsp&nbsp&nbsp&nbsp ❤️❤️❤️</p>
+              <p><b>₹<%=element.price%></b>/night &nbsp&nbsp&nbsp&nbsp&nbsp ❤️❤️❤️</p>
                
             </p>
           </div>
@@ -47,12 +47,13 @@
        <%});%>
 
         <%data1.forEach((elem)=>{%>
-      <div class="cardes" style="width: 18rem;">
+          <div class="col-sm-3">
+      <div class="cardes">
         <a href="/host_details/<%=elem.HomeName%>"><img src="<%=elem.Homeurl%>" class="card-img-top" alt="..."></a>
         <div class="card-body">
           <p class="card-text">
            
-            <p><b><%=elem.HomeName%></b> </p><span>⭐⭐⭐⭐⭐ 5.0</span>
+            <p><b><%=elem.HomeName%></b> </p> 
            
             <p><b>₹<%=elem.Price%></b>/night &nbsp&nbsp&nbsp&nbsp&nbsp ❤️❤️❤️</p>
            
@@ -60,8 +61,10 @@
           </p>
         </div>
       </div>
-      <%});%>
     </div>
+
+      <%});%>
+    </di>
 
   
     

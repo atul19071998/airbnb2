@@ -1,0 +1,75 @@
+  .container{
+    margin-top: 92px;
+    height:auto;
+  }
+h1{
+    font-weight: 800 !important;
+    font-size: 50px;
+  }
+  
+  h6{
+    color: #716f6f
+  }
+  
+  .img-wrapper{
+    width: 500px;
+    padding: 10px;
+  }
+   
+  
+  img{
+    height: 100%;
+    width: 100%;
+  }
+  #form-left{
+  width:600px;
+   padding:5px;
+  }
+  
+  input, textarea, select{
+    background: #f7f9f8 !important;
+  }
+  
+  .email-us{
+    text-decoration: underline;
+  }
+  
+  label{
+    font-weight: 600;
+    color: #716f6f
+  }
+  
+  button{
+    margin-top: 8px;
+    float: right;
+  }
+  button span{
+    margin-left: 8px;  
+  
+  }
+  
+  button i{
+    margin: 0px 8px;
+  }
+  @media only screen and (max-width: 600px) {
+    
+    h1{
+      font-size:14px;
+    }
+    h6{
+      font-size: 14px;
+    }
+    .img-wrapper img{
+       width:80vw;
+      height:30vh;
+    }
+    
+    button{
+      margin-top: 0px;
+       
+    }
+    .container{
+      height:130vh;
+    }
+  
+  }
