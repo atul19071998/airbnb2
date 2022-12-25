@@ -1,3 +1,4 @@
+  /* stylinng starts here */
   .container{
     margin-top: 92px;
     height:auto;
@@ -51,6 +52,7 @@ h1{
   button i{
     margin: 0px 8px;
   }
+  /* media queries on max-width 600px */
   @media only screen and (max-width: 600px) {
     
     h1{
@@ -73,3 +75,4 @@ h1{
     }
   
   }
+  /* styling ends here */

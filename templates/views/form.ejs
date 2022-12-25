@@ -1,0 +1,48 @@
+<form action="">
+    <%=function myFunction() {
+        if (document.getElementById("form-submit") === true) {
+          alert("booking is succesfull");
+        } else {
+          alert("please enter valid information");
+        }
+
+      }
+      %>
+    <h3>Book Your Home.</h3>
+    <p>Total price :<b>₹1,<%=data.price%></b></p>
+
+    <div class="form-group">
+      <input class="form-control" type="date" required>
+      <span class="form-label">Check In</span>
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="date" required>
+      <span class="form-label">Check out</span>
+    </div>
+    <div class="form-group">
+      <select class="form-control" required>
+        <option value="" selected hidden>no of rooms</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select>
+      <span class="select-arrow"></span>
+      <span class="form-label">Rooms</span>
+    </div>
+    <div class="form-group">
+      <select class="form-control" required>
+        <option value="" selected hidden>no of adults</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select>
+      <span class="select-arrow"></span>
+      <span class="form-label">Adults</span>
+    </div>
+    <div class="form-btn">
+      <button class="submit-btn" type="submit" id="form-submit" onchange="myfunction"
+        onclick="myFunction()">Book Now</button>
+    </div>
+</div>
+<%}%>
+</form>

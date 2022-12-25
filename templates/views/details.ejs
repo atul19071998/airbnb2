@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bootstrap demo</title>
+  <!--link al the css files,bootstrap cdn link, fontawesome-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -14,8 +15,11 @@
 </head>
 
 <body>
+  <!-- navbar comes from partials file -->
   <%- include('../partials/navbar') %>
+    <!-- booking section starts here -->
     <section class="booking">
+      <!-- cards section starts here -->
       <div class="cards">
         <h2 class="px-5">
           <%=data.name%>
@@ -31,6 +35,8 @@
           </div>
         </div>
       </div>
+      <!-- imagegrid section starts here -->
+      <p class="px-5"> <%=data.address.country%></p>
       <div class="imageGrid">
         <div class="item-1"> <img src="<%=data.images.picture_url%>" class="card-img-top" alt="..." /></div>
         <div class="item-2"> <img src="<%=data.images.picture_url%>" class="card-img-top" alt="..." /></div>
@@ -38,9 +44,11 @@
         <div class="item-4"> <img src="<%=data.images.picture_url%>" class="card-img-top" alt="..." /></div>
         <div class="item-5"> <img src="<%=data.images.picture_url%>" class="card-img-top" alt="..." /></div>
       </div>
+      <!-- imagegrid section ends here -->
+      <!-- about section starts here -->
       <div class="about">
         <span>
-          <h2><i class="fa-solid fa-house-user"></i></i> About Home</h2>
+          <h2><i class="fa-solid fa-house-user"></i> About Home</h2>
         </span>
         <p>
           <%=data.space%>
@@ -75,9 +83,9 @@
         <p>
           <%=data.cancellation_policy%>
         </p>
-
-
       </div>
+      <!-- about section ends here -->
+      <!-- review section starts here -->
       <div class="review">
         <div class="review-left">
           <div class="review_logo">
@@ -117,32 +125,33 @@
           </div>
         </div>
         <div class="review-right">
+          <!-- booking form section starts here -->
           <div class="reserved">
-            <form action="">
+            <form name="myForm"    action="">
               <h3>Book Your Home.</h3>
-              <p>Total price :<b>₹11,<%=data.price%></b></p>
+              <p>Total price :<b>₹1,<%=data.price%></b></p>
 
               <div class="form-group">
-                <input class="form-control" type="date" required>
-                <span class="form-label">Check In</span>
+                <input class="form-control" type="date"  name="fname"  required>
+                <span   class="form-label">Check In</span>
               </div>
               <div class="form-group">
-                <input class="form-control" type="date" required>
-                <span class="form-label">Check out</span>
+                <input class="form-control" type="date"   required>
+                <span value="0" class="form-label">Check out</span>
               </div>
               <div class="form-group">
-                <select class="form-control" required>
-                  <option value="" selected hidden>no of rooms</option>
+                <select class="form-control"   required>
+                  <option value="0" selected hidden>no of rooms</option>
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
                 </select>
                 <span class="select-arrow"></span>
                 <span class="form-label">Rooms</span>
-              </div>
+              </div> 
               <div class="form-group">
                 <select class="form-control" required>
-                  <option value="" selected hidden>no of adults</option>
+                  <option value="0" selected hidden>no of adults</option>
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -151,12 +160,21 @@
                 <span class="form-label">Adults</span>
               </div>
               <div class="form-btn">
-                <button class="submit-btn" type="submit" id="form-submit"  onchange= "myfunction" onclick="myFunction()">Book Now</button>
+                <button class="submit-btn" type="submit" onclick="validateForm()" id="form-submit">Book Now</button>
               </div>
           </div>
+        </form>
+
+         
+
+
+
+
+
         </div>
       </div>
-
+      <!-- booking form section ends here -->
+      <!-- map section starts here -->
       <div class="map">
         <h4>Where you'll be</h4>
         <iframe
@@ -164,7 +182,8 @@
           width="95%" height="700" style="border: 0" allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-
+      <!-- map section ends here -->
+      <!-- footer section starts here -->
       <div class="container">
         <footer class="py-5">
           <div class="row">
@@ -233,20 +252,23 @@
             </ul>
           </div>
         </footer>
+        <!-- footer section ends here -->
       </div>
     </section>
-
-
+    <!-- booking section ends here -->
+    <!-- js starts here -->
     <script>
-      function myFunction() {
-        if (document.getElementById("form-submit") === true){
-          alert("booking is succesfull");
-        }  else{
-          alert("please enter valid information");
-        }
-        
-      }
-    </script>
+      function validateForm() {
+  let x = document.forms["myForm"]["fname"].value;
+  if (x == "") {
+    alert("Please enter a Valid information ⚠️");
+    return false;
+  }else{
+    alert("Your Booking is Succesfull 👍 ✅");
+  }
+} 
+      </script>
+     
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
       defer></script>
@@ -254,7 +276,7 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/6e29967266.js" crossorigin="anonymous"></script>
-
+    <!-- js ends here -->
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-
+/* styling starts here */
 *{
     margin: 0;
     padding: 0;
@@ -11,10 +11,6 @@
 html{
     font-size: 80.5%;
 }
-
- 
-
- 
 
 
 .error-wrapper{
@@ -89,7 +85,7 @@ html{
 }
 
 
-
+ /* media queries om max-width:600px */
 @media only screen and (max-width: 600px) {
     .error-wrapper > .image-wrapper {
       
@@ -154,3 +150,4 @@ html{
         text-align: center;
     }
 }
+/* styling ends here */

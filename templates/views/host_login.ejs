@@ -4,97 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bootstrap demo</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+     <!--link al the css files,bootstrap cdn link, fontawesome-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://kit.fontawesome.com/732188d8b2.js"
-      crossorigin="anonymous"
-    ></script>
-
+      crossorigin="anonymous"/>
+    <script src="https://kit.fontawesome.com/732188d8b2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/style.css" />
-    <style>
-      body {
-        background-image: url("https://img.freepik.com/free-photo/mockup-white-wall-loft-style-house-with-sofa-accessories-room-3d-rendering_41470-3836.jpg?w=2000");
-        background-size: cover;
-      }
-      .container {
-        width: 95vw;
-        height: 100vh;
-        float: right;
-        margin-top: 100px;
-
-        background-color: transparent;
-        padding: 10px;
-      }
-      p {
-        font-size: 25px;
-        text-align: center;
-      }
-      .form-control {
-        width: 300px;
-      }
-      p {
-        font-size: 20px;
-        margin-left: 10px;
-      }
-      
- @media only screen and (max-width: 600px) {
-  .container{
-    width:300px;
-    height:300px;   
-    display:block;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
-    padding:10px;
-  }
-  body{
-        background-image: url("https://img.freepik.com/free-photo/mockup-white-wall-loft-style-house-with-sofa-accessories-room-3d-rendering_41470-3836.jpg?w=2000 ");
-        background-size:cover;
-        height:100vh;
-         
-      }
-      .form-control{
-            width:150px;
-            height:20px;
-            background-color: transparent;
-            border: 1px solid grey;
-             text-decoration: none;
-        }
-        p{
- font-size: 12px;
- 
- }
- h2{
-   
-  font-size: 16px;
- }
- .form-label{
-  font-size: 14px;
-  text-align: center;
- 
- }
- .mb-3{
-  font-size: 14px;
-  width:300px;
-  height:50px;
- }
- .btn{
-  width:80px;
-  height:30px;
-  font-size: 12px;
-  font-weight: bold;
- } 
-}
-    </style>
+    <link rel="stylesheet" href="/css/hostlogin.css" />
   </head>
   <body>
-    <!-- {{>navbar}} -->
+<!-- navbar comes from partials file -->
     <%- include('../partials/navbar') %>
+    <!-- container section starts here -->
     <div class="container">
       <p>Log in</p>
       <hr />
@@ -127,6 +49,8 @@
         or <b><a href="/host_signup"> Signup Here!</a></b>
       </form>
     </div>
+      <!-- container section ends  here -->
+      <!-- footers comes from partial file -->
     <%- include('../partials/footer') %>
 
     <script

@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bootstrap demo</title>
+      <!--link al the css files,bootstrap cdn link, fontawesome-->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -18,13 +19,14 @@
     <link rel="stylesheet" href="/css/hostproperty.css" />
   </head>
   <body>
+    <!-- navbar comes from partials file -->
     <%- include('../partials/navbar') %>
+    <!-- container-fluid starts here -->
     <div class="container-fluid">
       <div class="experience">
         <form action="/hostinform" method="POST" class="row g-3">
           <h2>Add your Host Home Properties and details...</h2>
           <p>Please mention PropertyType:- Home</p>
-
           <div class="col-sm-6">
             <label for="Home name" class="form-label">Home Name</label>
             <input type="home name" class="form-control" name="hname" />
@@ -70,7 +72,7 @@
         </form>
       </div>
     </div>
-
+        <!-- container-fluid ends here -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
