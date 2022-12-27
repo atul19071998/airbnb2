@@ -15,62 +15,65 @@
       src="https://kit.fontawesome.com/732188d8b2.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/hostproperty.css" />
+    <link rel="stylesheet" href="/css/edituser.css" />
+   
   </head>
   <body>
-    <!-- navbar comes from partials file -->
-    <%- include('../partials/navbar') %>
+
     <!-- container-fluid starts here -->
     <div class="container-fluid">
       <div class="experience">
-        <form action="/hostinform" method="POST"   class="row g-3">
-          <h2>Add your Host Home Properties and details...</h2>
-          <p>Please mention PropertyType:- Home</p>
+         
+        <h2>Update your Host-Property.</h2>
+        
+        <form action="/hostinform/<%=data1._id%>" method="POST"  class="row g-3">
+        
           <div class="col-sm-6">
             <label for="Home name" class="form-label">Home Name</label>
-            <input type="home name" class="form-control" name="hname" />
+            <input type="home name" value=" <%=data1.HomeName%>" class="form-control" name="hname" />
           </div>
           <div class="col-sm-6">
             <label for="location" class="form-label">Location</label>
-            <input type="password" class="form-control" name="location" />
+            <input type="password" value="<%=data1.Location%>" class="form-control" name="location" />
           </div>
           <div class="col-sm-6">
             <label for="property_type" class="form-label">PropertyType</label>
-            <input type="property_type" class="form-control" name="ptype" />
+            <input type="property_type"  value="<%=data1.PropertyType%>" class="form-control" name="ptype" />
           </div>
+          
           <div class="col-sm-6">
             <label for="Image Url" class="form-label">Homeurl</label>
-            <input type="text" class="form-control" name="Imageurl" />
+            <input type="text" value="<%=data1.Homeurl%>" class="form-control" name="Imageurl" />
           </div>
           <div class="col-sm-6">
             <label for="minimum_nights" class="form-label"
               >minimum_nights</label
             >
-            <input type="text" class="form-control" name="mnights" />
+            <input type="text"  value="<%=data1.minimum_nights%>"class="form-control" name="mnights" />
           </div>
           <div class="col-sm-6">
             <label for="neighbourhood_overview" class="form-label"
               >neighbourhood_overview</label
             >
-            <input type="text" class="form-control" name="overview" />
+            <input type="text" value="<%=data1. neighbourhood_overview%>" class="form-control" name="overview" />
           </div>
           <div class="col-sm-6">
             <label for="cancellation_policy" class="form-label"
               >cancellation_policy</label
             >
-            <input type="text" class="form-control" name="policy" />
+            <input type="text"  class="form-control" value="<%=data1.cancellation_policy%>" name="policy" />
           </div>
           <div class="col-sm-6">
             <label for="price" class="form-label">Price</label>
-            <input type="number" class="form-control" name="price" />
+            <input type="number" value="<%=data1.Price%>" class="form-control" value="<%=data1.Price%>" name="price" />
           </div>
           <br />
-          <div class="col-12">
-            <button type="submit" class="btn btn-danger">Submit</button>
+            <button type="submit" value="Update Users"class="btn btn-danger">Update Admin</button>
           </div>
         </form>
+     
       </div>
+   
     </div>
         <!-- container-fluid ends here -->
     <script

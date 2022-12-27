@@ -29,8 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.set("view engine", "ejs"); //set view engine
 app.set("views", template_path);
-// ejs.registerPartials(partials_path);
-//  console.log(process.env.SECRET_KEY);
+ 
 
 
 //init session flash
@@ -141,7 +140,7 @@ app.get("/logout", async (req, res) => {
     res.status(500).send(error);
   }
 })
-//----------------for home route-------------------------------------------------------------------------**
+//----------------for home route------------------------------------------------**
 app.get('/' , async (req, res) => {
   let data = await FindData();
   let data1 = await FindData2();
@@ -155,9 +154,6 @@ app.get('/' , async (req, res) => {
 });
 
  
- 
-
-
 //---------------for register the form by using a scheema and token generate by using jwtwebtoken.---------**
 app.post('/register', async (req, res) => {
 
@@ -248,6 +244,9 @@ app.get('/signup', (req, res) => {
 app.get('/help', (req, res) => {
   res.render('help');
 });
+app.get('/edit', (req, res) => {
+  res.render("edit");
+});
 //-------for regisetred and check all the value ,generate token ,authenciation cookie generation--------**
 app.post('/register', async (req, res) => {
   const firstname = req.body.fname;
@@ -273,19 +272,17 @@ app.post('/register', async (req, res) => {
        res.redirect('/');
       //--new generate cookie-----------**
       res.cookie("jwt", token, {
-        expires: new Date(Date.now() + 3000),
+        expires: new Date(Date.now() + 30000),
         httpOnly: true
       });
       //-----passworde hash-------**
       const registered = await registerEmployee.save();
       // res.redirect('/');
-      console.log(registered);
       if(registered !== ""){
         req.flash("success","User registered and loggedin succesfully");
         res.redirect('/');
       }
     } else {
-      // res.send("password are not matching");
       req.flash("error","password not matching ");
       res.render('/flash-message');
       res.send("Password is not matching");
@@ -314,16 +311,73 @@ app.get('/host', (req, res) => {
 app.get('/host_login', (req, res) => {
   res.render("host_login");
 });
-//------host_xp routes -----------**
+//------host_exp routes -----------**
 app.get('/host_exp', (req, res) => {
   res.render("host_exp");
 });
-//--host signup-------------------** 
+ 
+//--host signup route-------------------** 
 app.get('/host_signup', (req, res) => {
   res.render("host_signup");
 });
+//------------perform crud operations--------------------------**
+app.get('/crud', async (req, res) => {
+  let data1 = await FindData2();
+  // console.log(data1);
+  res.render('crud', {
+    data1:data1,
+  });
+  
+});
+//-----------------------edit and update route  by crud operations--------------------**
+app.get("/edit/:id",async(req,res) =>{
+  let id = req.params.id;
+  // console.log(id);
+  Host_Register.findById(id,(err,data1) =>{
+    if(err) {
+      res.redirect("/crud");
+    }else{
+      if(data1 == null){
+        res.redirect("/crud");
+      }else{
+        res.render("edituser",{
+          title:'Edit User',
+          data1:data1,
+        });
+      }
+    }
+  })
+});
+//-----------------update by post route------------------------------**
+app.post('/hostinform/:id',async(req,res) =>{
+  let id = req.params.id;
+ await Host_Register.findOneAndUpdate({_id:id},{
+    HomeName: req.body.hname,
+    Location: req.body.location,
+    PropertyType: req.body.ptype,
+    Homeurl: req.body.Imageurl,
+    minimum_nights: req.body.mnights,
+    neighbourhood_overview: req.body.overview,
+    cancellation_policy:req.body.policy,
+    Price: req.body.price,
+  }, res.redirect("/crud"))
+  
+           
+  }); 
+//-----------------------deleted by crud operations-------**
+ app.get('/delete/:id',(req,res) =>{
+  let id = req.params.id;
+  Host_Register.findByIdAndRemove(id, function (err, result) {
+      if (err) {
+          console.log(err);
+      } else {
+           
+          res.redirect("/crud");
+      }
+  })
+ });
 
-//----------hostregister route 
+//----------hostregister route -----------------------------------**
 app.post('/Host_register', async (req, res) => {
   const Firstname = req.body.fname;
   //  console.log(firstname);
@@ -383,7 +437,8 @@ app.post('/hostlogin', async (req, res) => {
     const token = await useremail.generateAuthToken();
     // console.log("the token part" + token);
     if (isMatch) {
-      res.redirect("/host_exp");
+       
+      res.redirect("/crud");
     } else {
       res.send("Invalid login Details");
     }
@@ -408,19 +463,23 @@ app.post('/hostinform', async (req, res) => {
     
   });
   const registered = await HostSchema.save();
-  res.redirect('/');
+   if(registered != ''){
+    res.redirect('/crud');
+  }else{
+    res.redirect('/');
+  }
+ 
 });
 
+  
 //--jsonwebtoken.. creating a token----**
 const createToken = async () => {
   const token = await jwt.sign({ _id: "638ccfab50b8ea7e2482af0b" }, "SECRET_KEY", {
-    expiresIn: "2seconds"
+    expiresIn: "6seconds"
   });
-  //  console.log(token);
+ 
 
   const userVer =  await jwt.verify(token, "SECRET_KEY");
-  //  console.log(userVer);
-
 }
 createToken();
 app.listen(port, () => {
