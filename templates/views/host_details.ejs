@@ -52,11 +52,11 @@
         <span><h5><i class="fa-solid fa-restroom"></i> Room Type:</h5></span>
         <p>Home/Appartments</p>
         <span><h5><i class="fa-solid fa-moon"></i> Minimum Nights:</h5></span>
-        <p>3</p>
+        <p><%=data1.minimum_nights%></p>
         <span><h5><i class="fa-sharp fa-solid fa-street-view"></i> Overview:</h5></span>
-        <p> Feel like royalty with every visit to our elegant hotel suites.</p>
+        <p><%=data1.neighbourhood_overview%></p>
         <span><h5><i class="fa-solid fa-file"></i> Policy</h5></span>
-        <p>Moderate</p>
+        <p><%=data1.cancellation_policy%></p>
       </div>
        <!-- about section ends here -->
          <!-- review section starts here -->
@@ -82,7 +82,7 @@
           <div class="reserved">
              <!-- booking form section starts here -->
             <form name="myForm"  action="">
-            <h3>Book Your Home.</h3>
+            <h3>Reserve Your Home.</h3>
             <p>Total price :<b>₹<%=data1.Price%></b></p>
              
           <div class="form-group">
@@ -114,7 +114,7 @@
       <span class="form-label">Adults</span>
     </div>
     <div class="form-btn">
-      <button class="submit-btn" type="submit" id="form-submit" onclick="validateForm()">Book Now</button>
+      <button class="submit-btn" type="submit" id="form-submit" onclick="validateForm()">Reserve</button>
     </div>
     </div>
         </div>
