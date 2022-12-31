@@ -35,28 +35,25 @@ app.set("views", template_path);
 //init session flash
 app.use(session({
   secret:  process.env.SESSION_SECRET_KEY,
-  saveUninitialized: false,
+  saveUninitialized: true,
   resave:false,
   cookie :{
     //secure:true,
     httpOnly : true,
   }
 }));
-app.use(flash());
-app.use(function(req, res, next){
-  res.locals.message = req.flash();
+ app.use(flash());
+ //-------------------for displaying flash -messages----------------------**
+ app.use((req,res,next) =>{
+  // res.locals.message = req.session.message;
+  res.locals.success = req.flash('success');
+  res.locals.info = req.flash('info');
+  res.locals.danger = req.flash('danger');
+  res.locals.warning = req.flash('warning');
+  res.locals.primary = req.flash('primary');
+  // delete req.session.message;
   next();
-});
- 
-// app.get('/', (req, res) => {
-//   req.flash('success', 'Welcome!!');
-//   res.redirect('/flash-message');
-// });
- 
-app.get('/flash-message', (req, res) => {
-  res.render("flash");
-});
-
+ })
  
 //--------------------Database code access code from mongodb database----------------------**
 const { MongoClient, ObjectId } = require('mongodb');
@@ -99,7 +96,6 @@ async function FindData2(){
 };
 //-----------------------another function to find the homename  to fetch data off host_details page from mongodb-------**
 async function FindData3(HomeName) {
-  //-----------------------mongodb uri connection-----------------------**
   const uri = "mongodb+srv://atulnew:topology@cluster0.yylrcsq.mongodb.net/?retryWrites=true&w=majority";
   const client = new MongoClient(uri);
   await client.connect();
@@ -109,16 +105,17 @@ async function FindData3(HomeName) {
 }
  
 //--------------for render a details pages------------------------------------------------**
-app.get('/details/:id',   async (req, res) => {
+app.get('/details/:id',auth, async (req, res) => {
       
   let data = await FindData1(req.params.id);
+ 
   res.render('details', {
     data: data,
   });
   
 });
- //--------------for render ahost_ details pages------------------------------------------------**
-  app.get('/host_details/:HomeName',   async (req, res) => {
+ //--------------for render ahost_ details pages-------------------------------**
+  app.get('/host_details/:HomeName',  auth, async (req, res) => {
   let hub = (req.params.HomeName);
     let data1 = await FindData3(hub); 
 
@@ -130,12 +127,9 @@ app.get('/details/:id',   async (req, res) => {
 //-------------for set of logout route--------------------------------------------**
 app.get("/logout", async (req, res) => {
   try {
+    req.flash('success','User Logout Succesfully!!');
     res.clearCookie("jwt");
-    // console.log("logout succesfully");
-    req.flash("success","User loggedout succesfully");
-    res.redirect('/flash-message');
-    // const message = req.flash()
-    // // res.redirect("/");
+    res.redirect("/");
   } catch (error) {
     res.status(500).send(error);
   }
@@ -146,9 +140,7 @@ app.get('/' , async (req, res) => {
   let data1 = await FindData2();
   res.render('index', {
     data: data,
-    data1:data1,
-   
-     
+    data1:data1, 
   });
 
 });
@@ -173,12 +165,13 @@ app.post('/register', async (req, res) => {
         Zip: req.body.zip
 
       })
-       //for register the data and generate token------------**
+       //-----------for register the data and generate token------------**
       const token = await registerEmployee.generateAuthToken();
       //passworde hash
       res.cookie("jwt", token);//cookie generate by using jwt----**
       // console.log(cookie);
       const registered = await registerEmployee.save();
+      req.flash("primary","Congratulations your SignUp Successfully!!");
       res.status(201).redirect('/');
     }
      else {
@@ -197,7 +190,7 @@ app.get('/login', (req, res) => {
 
 });
 //---------------------for read form of login data and compare the information ,generating token,authenciation,add middleware---------------------------------------**
-app.post('/login', async (req, res) => {
+app.post('/login',  async(req, res) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
@@ -208,27 +201,20 @@ app.post('/login', async (req, res) => {
     //----------add middlewware and add token.---------**
     const token = await useremail.generateAuthToken();
     //-------cookie authenciation----------**
-    res.cookie("jwt", token, {
-      expires: new Date(Date.now() + 900000),
-      httpOnly: true,
-      //secure:true
-    });
-    
-    //  if(useremail.password === password){
+  
     if (isMatch) {
       //flash message
-      req.flash("success","User registered and loggedin succesfully");
-    //  res.redirect('/flash-message');
-      // req.flash('success', 'Welcome!!');
+      res.cookie("jwt", token, {
+        expires: new Date(Date.now() + 600000),
+        httpOnly: true,
+        //secure:true
+      });
+      req.flash("success","User LoggedIn Succesfully !!");
       res.redirect('/');
- 
-      // console.log("login success");
-     
     } else {
-      // res.send("Invalid login Details");
-      // req.flash("error","Email already registered please login");
-      // res.render('/flash-message');
-      res.send("Password is not matching.");
+      // res.send("Password is not matching.");
+      req.flash('info','User Password Not Match Please Try again!!!');
+      res.redirect('/');
     }
   } catch (err) {
     // res.status(400).send("Invalid login Details");
@@ -279,12 +265,11 @@ app.post('/register', async (req, res) => {
       const registered = await registerEmployee.save();
       // res.redirect('/');
       if(registered !== ""){
-        req.flash("success","User registered and loggedin succesfully");
+        req.flash("success","User Registered and LoggedIn successfully..");
         res.redirect('/');
       }
     } else {
       req.flash("error","password not matching ");
-      res.render('/flash-message');
       res.send("Password is not matching");
     }
 
@@ -320,6 +305,7 @@ app.get('/host_exp', (req, res) => {
 app.get('/host_signup', (req, res) => {
   res.render("host_signup");
 });
+
 //------------perform crud operations--------------------------**
 app.get('/crud', async (req, res) => {
   let data1 = await FindData2();
@@ -335,9 +321,11 @@ app.get("/edit/:id",async(req,res) =>{
   // console.log(id);
   Host_Register.findById(id,(err,data1) =>{
     if(err) {
+      
       res.redirect("/crud");
     }else{
       if(data1 == null){
+         
         res.redirect("/crud");
       }else{
         res.render("edituser",{
@@ -360,18 +348,24 @@ app.post('/hostinform/:id',async(req,res) =>{
     neighbourhood_overview: req.body.overview,
     cancellation_policy:req.body.policy,
     Price: req.body.price,
-  }, res.redirect("/crud"))
-  
-           
+  })
+  if (id != id) {
+    console.log(err);
+} else {
+    req.flash('primary','User Updated Successfully!!')
+    res.redirect('/crud');
+}
+       
   }); 
 //-----------------------deleted by crud operations-------**
  app.get('/delete/:id',(req,res) =>{
   let id = req.params.id;
-  Host_Register.findByIdAndRemove(id, function (err, result) {
+  Host_Register.findByIdAndRemove(id, function (err) {
       if (err) {
           console.log(err);
       } else {
-           
+        
+           req.flash('primary','Deleted data Successfully!!');
           res.redirect("/crud");
       }
   })
@@ -398,6 +392,7 @@ app.post('/Host_register', async (req, res) => {
         Zip: req.body.zip
 
       })
+      
       const token = await Host_registerEmployee.generateAuthToken();
       //  console.log("the token part" + token);
       //passworde hash
@@ -437,10 +432,17 @@ app.post('/hostlogin', async (req, res) => {
     const token = await useremail.generateAuthToken();
     // console.log("the token part" + token);
     if (isMatch) {
-       
+      res.cookie("jwt", token, {
+        expires: new Date(Date.now() + 600000),
+        httpOnly: true,
+        //secure:true
+      });
+      req.flash('success','User LogIn succesfully');
       res.redirect("/crud");
     } else {
-      res.send("Invalid login Details");
+      req.flash('primary','Password Not Match Please Try Again!! ');
+      res.redirect('/host_login')
+      // res.send("Invalid login Details");
     }
    
   } catch (err) {
@@ -464,6 +466,7 @@ app.post('/hostinform', async (req, res) => {
   });
   const registered = await HostSchema.save();
    if(registered != ''){
+    req.flash('success','User Data Added Succesfully!');
     res.redirect('/crud');
   }else{
     res.redirect('/');
@@ -471,14 +474,12 @@ app.post('/hostinform', async (req, res) => {
  
 });
 
-  
 //--jsonwebtoken.. creating a token----**
 const createToken = async () => {
   const token = await jwt.sign({ _id: "638ccfab50b8ea7e2482af0b" }, "SECRET_KEY", {
     expiresIn: "6seconds"
   });
  
-
   const userVer =  await jwt.verify(token, "SECRET_KEY");
 }
 createToken();

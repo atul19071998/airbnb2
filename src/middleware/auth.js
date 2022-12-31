@@ -13,7 +13,8 @@ try{
   next();
 }
 catch(error){
-res.status(401).send(error);
+ req.flash('success','Please Login first!!');
+res.redirect("/");
 }
 };
 

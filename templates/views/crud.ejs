@@ -31,24 +31,23 @@
               >Add New User <i class="fas fa-user"></i
             ></span>
           </a>
+       </div>
+       <div class="alert">
+        <% if (success && success != '') { %>
+        <div class="alert alert-dismissible fade show alert-success" role="alert">
+          <button class="btn-close" type="button"  data-bs-dismiss="alert" aria-label="Close"></button>
+          <strong><%=success%></strong>
+       
+        <% } else if(primary && primary != '') { %>
+          <div class="alert alert-dismissible fade show alert-primary" role="alert">
+            <button class="btn-close" type="button"  data-bs-dismiss="alert" aria-label="Close"></button>
+            <strong><%=primary%></strong>
+        
+          <% } %>
         </div>
-        <% if (message) { %>
-        <div
-          class="alert alert-dismissible fade show alert-<%= message.type %>"
-          role="alert"
-        >
-          <button
-            class="btn-close"
-            type="button"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-          ></button>
-          <strong><%= message.message %></strong>
-        </div>
-        <% } %>
-        <div>
-          <table class="table">
-            <thead class="thead-dark">
+          <table class="table ">
+            <% if(data1 != '') { %>
+            <thead class="thead-dark ">
               <tr>
                 <th>ID</th>
                 <th>Image</th>
@@ -84,6 +83,9 @@
             </tbody>
             <%})%>
           </table>
+         <% } else{ %>
+          <h1 class="text-center text-secondary mt-5">No users found in the database!.</h1>
+          <% } %>
         </div>
       </div>
     </main>

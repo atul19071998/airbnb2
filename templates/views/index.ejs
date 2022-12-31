@@ -14,16 +14,30 @@
       margin-top: 90px;
      
     }
+     
   </style>
 </head>
 <body>
     <!-- header section starts here -->
     <%- include('../partials/navbar') %>
     <!-- header section ends here -->
-    
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
           <!-- container section starts here -->
     <section class="container">
+      <div class="alert">
+        <% if (success && success != '') { %>
+               
+          <div class="alert alert-dismissible fade show alert-success" role="alert">
+            <button class="btn-close" type="button"  data-bs-dismiss="alert" aria-label="Close"></button>
+            <strong><%=success%></strong>
+            <% } else if(primary && primary != '') { %>
+              <div class="alert alert-dismissible fade show alert-primary" role="alert">
+                <button class="btn-close" type="button"  data-bs-dismiss="alert" aria-label="Close"></button>
+                <strong><%=primary%></strong>
+              
+                <% } %>
+              </div>
+             
       <!-- row section start here -->
       <div class="row">
         <%data.forEach((element)=>{%>

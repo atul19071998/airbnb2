@@ -17,7 +17,21 @@
 <!-- navbar comes from partials file -->
     <%- include('../partials/navbar') %>
     <!-- container section starts here -->
+   
     <div class="container">
+      <div class="alert">
+        <% if (success && success != '') { %>
+               
+          <div class="alert alert-dismissible fade show alert-success" role="alert">
+            <button class="btn-close" type="button"  data-bs-dismiss="alert" aria-label="Close"></button>
+            <strong><%=success%></strong>
+            <% } else if(primary && primary != '') { %>
+              <div class="alert alert-dismissible fade show alert-primary" role="alert">
+                <button class="btn-close" type="button"  data-bs-dismiss="alert" aria-label="Close"></button>
+                <strong><%=primary%></strong>
+              
+                <% } %>
+              </div>
       <p>Log in</p>
       <hr />
       <h2>Welcome to Airbnb Host Experience.</h2>

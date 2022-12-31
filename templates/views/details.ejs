@@ -20,6 +20,7 @@
     <!-- booking section starts here -->
     <section class="booking">
       <!-- cards section starts here -->
+
       <div class="cards">
         <h2 class="px-5">
           <%=data.name%>
@@ -46,39 +47,41 @@
       </div>
       <!-- imagegrid section ends here -->
       <!-- about section starts here -->
+      
       <div class="about">
+        <div class="d-flex flex-column flex-sm-row justify-content-between py-2 my-4 border-bottom"></div>
         <span>
-          <h2><i class="fa-solid fa-house-user"></i> About Home</h2>
+          <h2><i class="fa-solid fa-house-user"></i>   About Home</h2>
         </span>
         <p>
           <%=data.space%>
         </p>
         <span>
-          <h5><i class="fa-solid fa-building-wheat"></i> Home Type:</h5>
+          <h5><i class="fa-solid fa-building-wheat"></i>  Home Type:</h5>
         </span>
         <p>
           <%=data.property_type%>
         </p>
         <span>
-          <h5><i class="fa-solid fa-restroom"></i> Room Type:</h5>
+          <h5><i class="fa-solid fa-restroom"></i>   Room Type:</h5>
         </span>
         <p>
           <%=data.room_type%>
         </p>
         <span>
-          <h5><i class="fa-solid fa-moon"></i> Minimum Nights:</h5>
+          <h5><i class="fa-solid fa-moon"></i>   Minimum Nights:</h5>
         </span>
         <p>
           <%=data.minimum_nights%>
         </p>
-        <span>
-          <h5><i class="fa-sharp fa-solid fa-street-view"></i> Overview:</h5>
-        </span>
+         
+        <span><h5><i class="fa-sharp fa-solid fa-street-view"></i> Overview:</h5></span>
+         
         <p>
           <%=data.neighborhood_overview%>
         </p>
         <span>
-          <h5><i class="fa-solid fa-file"></i> Policy</h5>
+          <h5><i class="fa-solid fa-file"></i>  Policy</h5>
         </span>
         <p>
           <%=data.cancellation_policy%>
@@ -86,6 +89,7 @@
       </div>
       <!-- about section ends here -->
       <!-- review section starts here -->
+      <div class="d-flex flex-column flex-sm-row justify-content-between py-2 my-4 border-bottom"></div>
       <div class="review">
         <div class="review-left">
           <div class="review_logo">
