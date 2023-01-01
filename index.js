@@ -11,8 +11,8 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const auth = require("./src/middleware/auth");
 const bodyParser = require('body-parser');
-//--require port and also set environment variable------------**
-const port = process.env.PORT || 3000;
+//--require PORT and also set environment variable------------**
+const PORT = process.env.PORT || 3000;
 //--------------for database connect----------------------**
 const conn = require("./src/db/connect");
 
@@ -483,9 +483,9 @@ const createToken = async () => {
   const userVer =  await jwt.verify(token, "SECRET_KEY");
 }
 createToken();
-app.listen(port, () => {
+app.listen(PORT, () => {
 
-  console.log(`server is listen on port ${port}`);
+  console.log(`server is listen on PORT ${PORT}`);
 });
 //---------------------------------code ends here-----------------------------------**
 
