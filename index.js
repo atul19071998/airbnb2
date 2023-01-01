@@ -17,8 +17,8 @@ const PORT = process.env.PORT || 3000;
 const conn = require("./src/db/connect");
 
 const Register = require("./src/models/register");
-const Admin_Register = require("./src/models/Host_register");
-const Host_Register = require("./src/models/Hostform");
+const Admin_Register = require("./src/models/host_register");
+const Host_Register = require("./src/models/hostform");
 
 app.set('views', path.join(__dirname, './templates/views'));
 const template_path = path.join(__dirname, "./templates/views");
