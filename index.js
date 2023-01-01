@@ -9,19 +9,19 @@ const ejs = require('ejs');
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
-const auth = require("./middleware/auth");
+const auth = require("./src/middleware/auth");
 const bodyParser = require('body-parser');
 //--require port and also set environment variable------------**
 const port = process.env.PORT || 3000;
 //--------------for database connect----------------------**
-const conn = require("./db/connect");
+const conn = require("./src/db/connect");
 
-const Register = require("./models/register");
-const Admin_Register = require("./models/Host_register");
-const Host_Register = require("./models/Hostform");
+const Register = require("./src/models/register");
+const Admin_Register = require("./src/models/Host_register");
+const Host_Register = require("./src/models/Hostform");
 
-app.set('views', path.join(__dirname, '../templates/views'));
-const template_path = path.join(__dirname, "../templates/views");
+app.set('views', path.join(__dirname, './templates/views'));
+const template_path = path.join(__dirname, "./templates/views");
  //------------use of cookieparser,set view engine ejs------------------------**
 app.use(express.json());
 app.use(cookieParser());
