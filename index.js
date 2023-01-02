@@ -213,7 +213,7 @@ app.post('/login',  async(req, res) => {
       res.redirect('/');
     } else {
       // res.send("Password is not matching.");
-      req.flash('primary','User Password Not Match Please Try again!!!');
+      req.flash('success','User Password Not Match Please Try again!!!');
       res.redirect('/');
     }
   } catch (err) {
