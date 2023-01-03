@@ -13,7 +13,7 @@ const auth = require("./src/middleware/auth");
 const bodyParser = require('body-parser');
 //--require PORT and also set environment variable------------**
 const PORT = process.env.PORT || 3000;
-//--------------for database connect----------------------**
+//--------------for database connect------------------------***
 const conn = require("./src/db/connect");
 
 const Register = require("./src/models/register");
@@ -207,7 +207,7 @@ app.post('/login',  async(req, res) => {
       res.cookie("jwt", token, {
         expires: new Date(Date.now() + 600000),
         httpOnly: true,
-        //secure:true
+        //secure:true:heart_eyes:
       });
       req.flash("success","User LoggedIn Succesfully !!");
       res.redirect('/');
