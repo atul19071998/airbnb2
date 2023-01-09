@@ -29,8 +29,13 @@
               class="fa-solid fa-user" style="color:black"></i></i></span>
         </a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="/login">LogIn/SignUp</a></li>
-          <li><a class="dropdown-item" href="/logout">Logout</a></li>
+          <%if(locals.x){%>
+            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+          <%}else{%>
+            <li><a class="dropdown-item" href="/login">LogIn/SignUp</a></li>
+         <%}%>
+          
+          
           <li>
             <hr class="dropdown-divider">
           </li>

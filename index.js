@@ -136,9 +136,11 @@ app.get("/logout", async (req, res) => {
 app.get('/' , async (req, res) => {
   let data = await FindData();
   let data1 = await FindData2();
+  let x = req.cookies.jwt;
   res.render('index', {
     data: data,
-    data1:data1, 
+    data1:data1,
+    x:x, 
   });
 
 });
