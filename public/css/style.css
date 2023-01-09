@@ -114,7 +114,22 @@
     padding: 5px;
     border-radius: 17px;
   }
+  .container{
+    margin-top: 80px; 
+  }
+ 
+  .fa-heart{
+    position:absolute;
+    z-index: 1;
+    font-size: 22px;
+    color:rgb(248, 243, 243);
+    padding: 15px;
+    margin-left:205px;
 
+  }
+  p{
+    font-size: 14px;
+  }
   /* media queries on max-width:600px */
 @media only screen and (max-width: 600px) {
   .logo img{
@@ -129,7 +144,14 @@
     height:40px;
     
 }
+.fa-heart{
+    position:absolute;
+    z-index: 1;
+    font-size: 22px;
+    color:rgb(248, 243, 243);
+    margin-left:325px;
 
+  }
 
 .host{
     display: none;

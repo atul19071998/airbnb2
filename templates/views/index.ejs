@@ -9,13 +9,6 @@
   <script src="https://kit.fontawesome.com/732188d8b2.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/css/style.css" />
   <title>Airbnb</title>
-  <style>
-    .container{
-      margin-top: 90px;
-     
-    }
-     
-  </style>
 </head>
 <body>
     <!-- header section starts here -->
@@ -41,17 +34,16 @@
       <!-- row section start here -->
       <div class="row">
         <%data.forEach((element)=>{%>
-      
         <div class="col-sm-3">
         <div class="cards">
-         
+          <i class="fa-regular fa-heart"></i>
           <a href="/details/<%=element._id%>">
            <img src="<%=element.images.picture_url%>" 
            class="card-img-top" alt="..." onclick="show()"></a>
           <div class="card-body">
             <p class="card-text">
               <p><b><%=element.name%></b> </p> 
-             
+              <p><%=element.address.country%></p>
               <p><b>₹<%=element.price%></b>/night &nbsp&nbsp&nbsp&nbsp&nbsp ❤️❤️❤️</p>
                
             </p>
@@ -63,10 +55,12 @@
         <%data1.forEach((elem)=>{%>
           <div class="col-sm-3">
       <div class="cardes">
+        <i class="fa-regular fa-heart"></i>
         <a href="/host_details/<%=elem.HomeName%>"><img src="<%=elem.Homeurl%>" class="card-img-top" alt="..."></a>
         <div class="card-body">
           <p class="card-text">
             <p><b><%=elem.HomeName%></b> </p> 
+            <p> <%=elem.Location%></p></p>
             <p><b>₹<%=elem.Price%></b>/night &nbsp&nbsp&nbsp&nbsp&nbsp ❤️❤️❤️</p>
           </p>
         </div>

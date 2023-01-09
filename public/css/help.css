@@ -56,10 +56,10 @@ h1{
   @media only screen and (max-width: 600px) {
     
     h1{
-      font-size:14px;
+      font-size:18px;
     }
     h6{
-      font-size: 14px;
+      font-size: 16px;
     }
     .img-wrapper img{
        width:80vw;
@@ -68,11 +68,17 @@ h1{
     
     button{
       margin-top: 0px;
+      margin-right:50px;
        
     }
     .container{
+ 
       height:130vh;
     }
-  
+    
+    #form-left{
+      width:450px;
+       padding:5px;
+      }
   }
   /* styling ends here */

@@ -36,7 +36,7 @@ flex-direction:column;
 padding:10px;
 }
 body{
-    background-image: url(" https://images.unsplash.com/photo-1579427421635-a0015b804b2e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTR8fGhvdGVsc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60");
+    background-image: url("https://i.pinimg.com/736x/7b/ce/fa/7bcefa43ffd791bb8cd72b8072baedfa--sky-images-sky-photos.jpg ");
     background-size:cover;
     height:100vh;
      
@@ -59,7 +59,7 @@ font-size: 16px;
 .form-label{
 font-size: 14px;
 text-align: center;
-color:rgb(228, 23, 47)
+color:rgb(2, 0, 0)
 }
 .mb-3{
 font-size: 14px;

@@ -30,8 +30,6 @@ app.use(express.static('public'));
 app.set("view engine", "ejs"); //set view engine
 app.set("views", template_path);
  
-
-
 //init session flash
 app.use(session({
   secret:  process.env.SESSION_SECRET_KEY,
@@ -437,7 +435,7 @@ app.post('/hostlogin', async (req, res) => {
         httpOnly: true,
         //secure:true
       });
-      req.flash('success','User LogIn succesfully');
+      req.flash('success','Hi, Everyone Welcome to Host Admin System... 🙌😄');
       res.redirect("/crud");
     } else {
       req.flash('primary','Password Not Match Please Try Again!! ');

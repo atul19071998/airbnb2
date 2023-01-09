@@ -35,11 +35,12 @@ p {
   body {
     background-image: url("https://wallpaperaccess.com/full/31228.jpg");
     background-size: cover;
-    height: 180vh;
+    height: 170vh;
   }
 
   h2 {
     font-size: 20px;
+    margin-top:-50px;
   }
 }
 /* styling ends here */
