@@ -98,6 +98,7 @@
         
        }
        /* media queries on max-width:600px */
+       
        @media only screen and (max-width: 600px) {
       
        .imageGrid{
@@ -135,6 +136,7 @@
         font-size: 12px;
       }
       h2{
+        
         font-size: 15px;
       }
       h5{
@@ -162,6 +164,10 @@ height: 20px;
 margin-left: 50px;
 padding: 10px;
  
+}
+.about{
+  width:100%;
+   
 }
 
 .row {
@@ -192,4 +198,18 @@ iframe{
   .px-5{
    font-size: 12px;
   }
+  .booking {
+    width: 50vw;
+    height: 100vh;
+    margin-top: 100px;
+  }
+  .booking-left {
+    margin-left: 10px;
+  }
+  .booking-right {
+    margin-right: 30px;
+  }
        }
+      
+      /* styling ends here */
+      
