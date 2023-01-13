@@ -176,17 +176,14 @@ display: none;
 .d-flex{
 display: none;
 }
-.reserved{
-width:300px;
-height: 200px;
-}
-   
+ 
 .review-left{
   display: none;
 }
 .review-right .reserved{
-  width: 430px;
+  width: 380px;
 }
+ 
  
 footer{
   display: none;
