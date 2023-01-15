@@ -2,6 +2,7 @@
   .container{
     margin-top: 92px;
     height:auto;
+    width:100vw;
   }
 h1{
     font-weight: 800 !important;
@@ -56,14 +57,14 @@ h1{
   @media only screen and (max-width: 600px) {
     
     h1{
-      font-size:18px;
+      font-size:20px;
     }
     h6{
-      font-size: 16px;
+      font-size: 18px;
     }
     .img-wrapper img{
-       width:80vw;
-      height:30vh;
+       width:70%;
+      height:40vh;
     }
     
     button{
@@ -73,12 +74,14 @@ h1{
     }
     .container{
       width:100%;
-      height:130vh;
+      height:150vh;
     }
     
     #form-left{
       width:450px;
        padding:5px;
       }
+      
+     
   }
   /* styling ends here */

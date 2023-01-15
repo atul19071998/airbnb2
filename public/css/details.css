@@ -98,115 +98,64 @@
         
        }
        /* media queries on max-width:600px */
+      
+
        
        @media only screen and (max-width: 600px) {
-      
        .imageGrid{
-       display:flex;
-       flex-direction: column;
-       width: 200px;
-       height:200px;
-      }
-      .item-1 img{
-        width:430px;
-        height:200px;
-        padding:5px;
-        border-radius: 15px;
-
-      }
-      .item-2 img{
-        display: none;
-      }
-      .item-3 img{
-        display: none;
-      }
-      .item-4 img{
-        display: none;
-      }
-      .item-5 img{
-        display: none;
-      }
-      .booking-left{
-        font-size: 12px;
-      }
-      .booking-right{
-        font-size: 12px;
-      }
-      p{
-        font-size: 12px;
-      }
-      h2{
-        
-        font-size: 15px;
-      }
-      h5{
-        font-size: 14px;
-      }
-      .review{
         display: flex;
-        flex-direction: column;
-      }
-      .review_logo img{
-          width:140px;
-          height:50px;
-           
-      }
-      h4{
-        font-size: 16px;
-      }
-      .review-right{
-  width:100%;
-  height:50vh;
-}
-.map{
-
-height: 20px;
-margin-left: 50px;
-padding: 10px;
- 
-}
-.about{
-  width:100%;
-   
-}
-
-.row {
-display: none;
-}
-.d-flex{
-display: none;
-}
- 
-.review-left{
-  display: none;
-}
-.review-right .reserved{
-  width: 380px;
-}
- 
- 
-footer{
-  display: none;
-}
-iframe{
-  width: 490px;
-  height: 300px;
-  }
-  .px-5{
-   font-size: 12px;
-  }
-  .booking {
-    width: 50vw;
-    height: 100vh;
-    margin-top: 100px;
-  }
-  .booking-left {
-    margin-left: 10px;
-  }
-  .booking-right {
-    margin-right: 30px;
-  }
-       }
+        flex-direction:row;
+        margin-left: -10px;
       
+       }
+       .item-1 img{
+        width:160%;
+        height:100%;
+        border-top-right-radius: 18px;
+        border-bottom-right-radius: 18px;
+     
+       }
+        
+       .item-2 img{
+        display:none;
+       }
+       .item-3 img{
+        display:none;
+       }
+       .item-4 img{
+        display:none;
+       }
+       .item-5 img{
+        display:none;
+       }
+       .review{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:40;
+      
+       
+       }
+       .review-right{
+        width:50%;
+       }
+       
+       .review-right .reserved{
+        width: 65%;
+        height:70%;
+      }
+      .form-control {
+        width: 60%;
+      }
+      .review-left{
+        display: none;
+      }
+      .map iframe{
+        width:100%;
+      }
+       #foot{
+        display: none;
+      }
+       }
       /* styling ends here */
       
