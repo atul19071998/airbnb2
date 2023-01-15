@@ -109,7 +109,7 @@
       
        }
        .item-1 img{
-        width:160%;
+        width:170%;
         height:100%;
         border-top-right-radius: 18px;
         border-bottom-right-radius: 18px;
@@ -132,12 +132,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width:40;
+        width:40%;
+        
       
        
        }
        .review-right{
-        width:50%;
+        width:30%;
+       
        }
        
        .review-right .reserved{
